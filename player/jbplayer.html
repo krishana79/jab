@@ -1,0 +1,146 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<!--meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /-->
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+
+<title>jb-player</title>
+<script language="JavaScript" type="text/javascript">
+var videoid = gup( 'frank' );
+function gup( name )
+{
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var results = regex.exec( window.location.href );
+  if( results == null )
+    return "";
+  else
+    return results[1];
+}
+
+function callToActionscript(flash, str) {
+	alert("obj: "+getFlashMovie(flash)+", jsReady: "+jsReady)
+	//alert("jsReady: "+jsReady);
+	if(jsReady){
+		getFlashMovie(flash).sendToActionscript(str);
+	}
+}
+var jsReady = false;
+var isPlaying = false;
+
+function videoPlayerReady() {
+	jsReady = true;
+}
+
+function getVPMovieName(movieName) {
+	if (navigator.appName.indexOf("Microsoft") != -1) {
+		return window[movieName];
+	}else {
+		return document.getElementById(movieName);
+	}
+}
+
+function getInternetExplorerVersion()
+// Returns the version of Windows Internet Explorer or a -1
+// (indicating the use of another browser).
+{
+   var rv = -1; // Return value assumes failure.
+   if (navigator.appName == 'Microsoft Internet Explorer')
+   {
+      var ua = navigator.userAgent;
+      var re  = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+      if (re.exec(ua) != null)
+         rv = parseFloat( RegExp.$1 );
+   }
+   return rv;
+}
+function checkIEVersion()
+{
+   var msg = "You're not using Windows Internet Explorer.";
+   var ver = getInternetExplorerVersion();
+   if ( ver> -1 )
+   {
+      if ( ver>= 9.0 )
+         msg = "You're using Windows Internet Explorer 9.";
+	  else if ( ver == 8.0 )
+    	  msg = "You're using Windows Internet Explorer 8.";
+      else if ( ver == 7.0 )
+    	  msg = "You're using Windows Internet Explorer 7.";
+      else if ( ver == 6.0 )
+    	  msg = "You're using Windows Internet Explorer 6.";
+      else
+    	  msg = "You should upgrade your copy of Windows Internet Explorer";
+    }
+   //alert(ver+" - "+ msg);
+}
+
+function getFlashMovie(movieName) {
+	if (navigator.appName.indexOf("Microsoft") != -1) {
+		 var ver = getInternetExplorerVersion();
+		// alert(ver);
+		//checkIEVersion();
+		if(ver < 9){
+			return window[movieName];
+		}else{
+			return document[movieName];
+		}
+		//return window[movieName];
+		
+	}else {
+		if(document[movieName].length != undefined){
+			return document[movieName][1];
+		}
+		return document[movieName];
+	}
+}
+
+function callToActionscript(flash, str) {
+	//alert("obj: "+getFlashMovie(flash)+", jsReady: "+jsReady)
+	//alert("jsReady: "+jsReady);
+	if(jsReady){
+		getFlashMovie(flash).sendToActionscript(str);
+	}
+}
+function getPlayerStatus(flash) {
+	if(jsReady){
+		isPlaying = getFlashMovie(flash).getPlayerStatus();
+	}
+}
+
+</script>
+
+</head>
+<body bgcolor="#ffffff">
+
+    <table border="0" align="center" cellpadding="0" cellspacing="0">
+	<tr valign="top">
+		<td width="622" align="center">
+			<div id="videoContainer" style="width:357px; height:515px;">
+      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="357" height="515" id="videoPlayer" align="middle">
+	<param name="allowScriptAccess" value="always" />
+	<param name="allowFullScreen" value="true" />
+	<param name="flashvars" value="videostream=sample_video&audioStream=sample_audio&loopcount=0&videoimage="/>
+	<param name="movie" value="jbplayer.swf?v1" />
+	<param name="quality" value="high" />
+	<param name="bgcolor" value="#ffffff" />	
+	<embed src="jbplayer.swf?v1" flashvars="videostream=sample_video&audioStream=sample_audio&loopcount=0&videoimage=" quality="high" bgcolor="#ffffff" width="357" height="515" name="videoPlayer" align="middle" allowScriptAccess="always" allowFullScreen="true" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />
+	</object>
+    </div></td>
+		<td width="2"></td>
+	</tr>
+      <tr valign="top">
+		<td align="center" ></td>
+		<td ></td>
+	</tr>
+    <tr valign="top">
+	  <td align="center" ></td>
+		<td ></td>
+	</tr>
+     <tr valign="top">
+	  <td align="center" ></td>
+		<td ></td>
+	</tr>
+</table>
+
+</body>
+</html>

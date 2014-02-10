@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/com/akamai/net
+END
+AkamaiConnection.as
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/com/akamai/net/AkamaiConnection.as
+END
+AkamaiNetStream.as
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/com/akamai/net/AkamaiNetStream.as
+END
+AkamaiDynamicNetStream.as
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/com/akamai/net/AkamaiDynamicNetStream.as
+END
+AkamaiEnhancedNetStream.as
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/com/akamai/net/AkamaiEnhancedNetStream.as
+END

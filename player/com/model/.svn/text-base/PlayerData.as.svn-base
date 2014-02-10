@@ -1,0 +1,212 @@
+﻿package com.model 
+{
+	/**
+	 * ...
+	 * @author ...
+	 */
+	import flash.display.MovieClip;
+	import flash.display.Stage;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
+	
+	public class PlayerData
+	{
+		public static var PLAYER_VERSION:String = "NDTV Player 7.2.1"
+		public static var STAGE:*;
+		public static var rootView:*;
+		public static var currentView:String;
+		public static var isLive:Boolean;
+		public static var autostart:String;
+		public static var contentDescription:String;
+		public static var contentTitle:String;
+		public static var contentDuration:String;
+		public static var editorialtags:String;
+		public static var contentFilePath:String;
+		public static var videoURL:String;
+		public static var videoID:String;
+		public static var pageurl:String;
+		public static var videoImage:String;
+		public static var playerWidth:Number;
+		public static var playerHeight:Number;
+		public static var gpiStatus:String;
+		public static var adPos_arr:Array = new Array();
+		public static var isContent:Boolean;
+		public static var GATracker:*;
+		public static var GATrackerForAds:*;
+		public static var channel:String;
+		public static var countryCode:String;
+		public static var category:String;
+		public static var videoType:String;
+		public static var contentNetwork:String;
+		
+		public static var isVideoAPI:Boolean = false
+		public static var isRTMP:Boolean = false;
+		
+		public static var copy_videoURL:*
+		public static var copy_embed:*
+		
+		public static var isStreamGARecorded:Boolean = false
+		
+		public static var renderer:*;
+		public static var isMidrollInitiated:Boolean = false
+		
+		public static var vodMidRoll_array:Array = new Array();
+		public static var isVODMidrollDone:Boolean = false;
+		public static var isVODMidrollDispatched:Boolean = false
+		
+		public static var AKAMAI_HOSTNAME:String;
+		public static var AKAMAI_FILENAME:String;
+		public static var isAKAMAI:Boolean = false;
+		public static var isContentPreBuffer:Boolean = false//to prebuffer video content data to avaoid delaying content play.
+		
+		//Forward/Backward steps of video
+		public static var STEP:Number = 10;
+		//Video ad agency ID
+		public static var agencyID:String
+		
+		//Message to show in case of midrolls
+		public static var breakMsg:String;
+		public static var switchURL:String;
+		
+		//Vdopia related variables
+		public static var vdopiaApiKey:String;
+		public static var vdopiaAdFormat:String;
+		public static var vdopiaFlashSkinWidth:String;
+		public static var vdopiaFlashSkinHeight:String;
+		//------------------------
+		
+		public static var objPlayerMain:*;
+		public static var objVdopia:*;
+		public static var objGPIReader:*;
+		
+		//Variables for Google AFV -------
+		public static var objGoogleAFV:*;
+		public static var googleGraphicalOverlayTimer:Number = 10; //It is a timer count
+		public static var gAFVMidrollCount:Number = 1
+		public static var useGUT:*; //Set useGUT to false to show companion banner in html else set it to true
+		//Live ID(ca-video-pub-7641565019577886), Test ID(ca-video-googletest1)
+		public static var googlePubId:String = "ca-video-pub-7641565019577886"  //"ca-video-pub-7641565019577886" "ca-video-googletest1"
+		public static var googleOverlayTimer:Timer = new Timer(1000);
+		public static var gTRVPlay:*; // this is to check for google video ad runs only as pre-roll.
+		//--------------------------------
+		//Variables for Tremor -----------
+		public static var tremorProgID:String
+		public static var objTremorMedia:*;
+		//--------------------------------
+		//Variables for VAST/VPAID -------
+		public static var objVast2Vpaid:*;
+		public static var VASTVPAID_TAG:String;
+		public static var isVASTWrapper:Boolean = false
+		
+		//Test LC VPAID tag - fallback for US Tremor
+		//public static var VASTVPAID_LC_TAG:String = "http://u-ads.adap.tv/a/h/H+hMQPQqxkWYA6pJBJv9P4koJopD+dFHkYg0q4Be3JrBjjxD8mm1tAA2UioQFUF4?cb=random_num&pageUrl=test-ndtv-vast-vpaid.com&description=VIDEO_DESCRIPTION&duration=VIDEO_DURATION&id=VIDEO_ID&keywords=VIDEO_KEYWORDS&title=VIDEO_TITLE&url=VIDEO_URL&eov=eov&as=3" //Test VPAID for LC
+		//LIVE LC VPAID tag 
+		public static var VASTVPAID_LC_TAG:String = "http://u-ads.adap.tv/a/h/HkcaEuxFlHjyRdoL9zGb+Q==?cb=random_num&pageUrl=ndtv.com&description=VIDEO_DESCRIPTION&duration=VIDEO_DURATION&id=VIDEO_ID&keywords=VIDEO_KEYWORDS&title=VIDEO_TITLE&url=VIDEO_URL&eov=eov&as=3" //LIVE VPAID for LC
+		
+		
+		//Test Adconion(AU) VAST tag - agencyID=4
+		//public static var VASTVPAID_AUS_TAG:String = "http://ad.amgdgt.com/ads/?t=dr&f=vast2&p=7866&pl=a30a3206&rnd=random_num" //VPAID/VAST - Adconion
+		//Live Australia VAST tag
+		public static var VASTVPAID_AUS_TAG:String = "http://ad.amgdgt.com/ads/?t=dr&f=vast2&p=7866&pl=a30a3206&rnd=random_num" //VPAID/VAST - Adconion
+		//public static var VASTVPAID_AUS_TAG:String = "http://bs.serving-sys.com/BurstingPipe/adServer.bs?cn=is&c=23&pl=VAST&pli=4298082&pi=0&pos=1115&ord=348329383&cim=1"; //testing
+		
+		//Test FoxNework(UK) VAST tag agencyID=5, fallback for UK Tremor
+		//public static var VASTVPAID_FOX_TAG:String = "http://www4.smartadserver.com/call/pubdirj/160834/1019584/ros.NDTV.fox_uk/545x352/random_num" //VAST2
+		//public static var VASTVPAID_FOX_TAG:String = "http://studio.brainient.com/outside/vastForCampaign/user_id=369;campaign_id=24905eee-214e-4d78-9dc6-55f4bb4b4aa5;tzone=2";
+		
+		//LIVE FoxNework(UK) VAST tag agencyID=5, fallback for UK Tremor
+		//public static var VASTVPAID_FOX_TAG:String = "http://www4.smartadserver.com/call/pubdirj/160834/1408667/ros.NDTV.fox_uk/1x1/random_num" //VAST2 
+		//public static var VASTVPAID_FOX_TAG:String = "http://www4.smartadserver.com/call/pubdirj/160834/1393539/ros.NDTV.fox_uk/1x1/random_num" //VAST2 with Wrapper tag
+		public static var VASTVPAID_FOX_TAG:String = "http://www4.smartadserver.com/call/pubx/23635/160834/9760/M/random_num/[target]" //rotation tag [production]
+		
+		//Test tag for ZEDO - agencyID=6
+		public static var VASTVPAID_ZEDO_TAG:String = "http://d7.zedo.com/jsc/d2/fns.vast?n=767&c=203&d=95&s=1&v=vast2&z="
+		//"http://d7.zedo.com/jsc/d2/fns.vast?n=767&c=203&d=95&s=1&v=vast2&z=";
+		//"http://ad4.liverail.com/?LR_PUBLISHER_ID=1331&LR_SCHEMA=vast2"; TVN Test tag(Singapore, Thailand and Malaysia) 
+		//http://ad4.liverail.com/?LR_PUBLISHER_ID=12276&LR_PARTNERS=712120&LR_SCHEMA=vast2-vpaid&LR_VERTICALS=g1,news,a1,a2,a3,a4,bus; TVN Live tag(Singapore, Thailand and Malaysia) 
+		//Zedo end--------------------------------
+		
+		//Test tag for JIVOX
+		//public static var VASTVPAID_JIVOX_TAG:String = 	"http://traffick.jivox.com/jivox/serverAPIs/getCampaignById.php?api=vast-vpaid&version=2.0&siteId=44f544d581daef&campaignId=28824&r=random_num&"; //VPAID from jivox
+		public static var VASTVPAID_JIVOX_TAG:String = "http://traffick.jivox.com/jivox/serverAPIs/getCampaignById.php?api=vast&version=2.0&siteId=44f544d581daef&campaignId=28883&r=random_num&"; //VAST2 from jivox
+		
+		public static var globalGATrack_Arr:Array;
+		
+		//--------------------------------
+		
+		public static var WRAPPER_IMPRESSION:Object;
+		public static var blnWRAPPER_IMPRESSION:Boolean;
+		public static var WRAPPER_IMPRESSION_XMLLIST:XMLList;
+		
+		public static var playerInit:Boolean = false;
+		public static var playerCurrentWidth:Number;
+		public static var playerCurrentHeight:Number;
+		public static var pWidth:*
+		public static var pHeight:*
+		
+		//Player status variables
+		public static var isPlaying:Boolean;
+		public static var isPause:Boolean;
+		
+		///Skip preroll test boolean for authoring environment
+		public static var skipPrerollTest:Boolean = true;
+		
+		//For test case of GPI()
+		public static var isTest:Boolean = true;
+		
+		public static var uniqueMidroll_arr:Array = new Array()
+		public static var skipMidroll:Boolean = false
+		public static var ifAdPlaying:Boolean = false
+		
+		public static var currentKeyCode:*
+		
+		public static var showNextPrevButton:String;
+		
+		//TIMEOUT VARIABLES
+		public static var globalTimeOutTimer:Timer = new Timer(10000, 1);		
+		public static var blnAdStart:Boolean = false
+		public static var currentADNetwork:*;
+		//////////////////////////////
+		
+		//Global Play/Pause timer
+		public static var globalPlayPauseTimer:Timer = new Timer(1000);
+		public static var totalSecsOfPausedVideo:Number = 0 ;
+		//----------------------
+		public static var isRelatedVideo:Boolean;
+		public static var relatedDecodedStr:String;
+		public static var relatedClipsHolder_arr:Array;
+		
+		//Inskin Variables-------------
+		public static var isInSkinResize:Boolean = false;
+		//-----------------------------
+		
+		public static var currentControl:*;
+		public static var isContentReplay:Boolean = false
+		
+		//Seek Thumbnails----------------
+		public static var seekVideoThumbDiff:Number;
+		public static var seekVideoThumbFolder:*;
+		public static var imgCountInStrip:Number;
+		public static var totalSeekVideoStrips:Number;
+		public static var showSeekThumb:Boolean = false;
+		public static var seekVideoThumbVidID:String;
+		public static var seekImageMarginCount:Number = 5
+		public static var totalSeekVideoThumb:Number;
+		
+		//-------------------------------
+		//Chapters-----------------------
+		public static var hasChapters:Boolean = false;
+		public static var chapterXML:XMLList;
+		//-------------------------------
+		//Annotation---------------------
+		public static var hasAnnotation:Boolean = false;
+		public static var annotationXML:XMLList;
+		//-------------------------------
+		//Bitgravity RTMP ------------------
+		public static var BG_HOSTNAME:String;
+		public static var BG_STREAMTYPE:String;
+		public static var BGVODs_ONLY:Boolean = true
+		//----------------------------------
+	}
+	
+}

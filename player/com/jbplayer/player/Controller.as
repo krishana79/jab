@@ -1,0 +1,1 @@
+﻿package com.jbplayer.player{	import flash.display.MovieClip;	private var _stage:*;	private var ns	public class Controller extends MovieClip	{		public function setStream(par:*):void{		_stage = par;	}		public function getStage():*{		return _stage;	}		public function playVideo():void{			}		public function pauseVideo():void{			}		//====	}}

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/net/dynamicstream
+END
+DynamicStreamItem.as
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/net/dynamicstream/DynamicStreamItem.as
+END
+ISwitchingRule.as
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/net/dynamicstream/ISwitchingRule.as
+END
+BufferRule.as
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/net/dynamicstream/BufferRule.as
+END
+MetricsProvider.as
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/net/dynamicstream/MetricsProvider.as
+END
+INetStreamMetrics.as
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/net/dynamicstream/INetStreamMetrics.as
+END
+FrameDropRule.as
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/net/dynamicstream/FrameDropRule.as
+END
+DynamicStreamBitrate.as
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/net/dynamicstream/DynamicStreamBitrate.as
+END
+BandwidthRule.as
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/net/dynamicstream/BandwidthRule.as
+END

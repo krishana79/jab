@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/utilities
+END
+HTTPBandwidthEstimate.as
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/utilities/HTTPBandwidthEstimate.as
+END
+StringUtil.as
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/utilities/StringUtil.as
+END
+FlashPlayer.as
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/utilities/FlashPlayer.as
+END
+DateUtil.as
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/utilities/DateUtil.as
+END
+TimeUtil.as
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/ndtv-dotnet.3/!svn/ver/4/trunk/VideoPlayerMVC/Raw/flash-akamai/flash/akamai/org/openvideoplayer/utilities/TimeUtil.as
+END
